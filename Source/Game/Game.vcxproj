@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>RS</TargetName>
+    <TargetName>down</TargetName>
     <OutDir>$(SolutionDir)..\Bin\</OutDir>
     <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
@@ -80,7 +80,7 @@
     <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>RS_d</TargetName>
+    <TargetName>down_d</TargetName>
     <OutDir>$(SolutionDir)..\Bin\</OutDir>
     <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
