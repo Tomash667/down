@@ -1,0 +1,17 @@
+#pragma once
+
+#define VERSION_MAJOR 0
+#define VERSION_MINOR 2
+#define VERSION_PATCH 0
+
+#ifndef STRING
+#	define _STRING(str) #str
+#	define STRING(str) _STRING(str)
+#endif
+
+#define VERSION ((VERSION_MAJOR << 16) | (VERSION_MINOR << 8) | VERSION_MINOR)
+#if VERSION_PATCH == 0
+#	define VERSION_STR STRING(VERSION_MAJOR) "." STRING(VERSION_MINOR)
+#else
+#	define VERSION_STR STRING(VERSION_MAJOR) "." STRING(VERSION_MINOR) "." STRING(VERSION_PATCH)
+#endif
