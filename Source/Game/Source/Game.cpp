@@ -9,6 +9,7 @@
 #include <ResourceManager.h>
 #include <Camera.h>
 #include <MeshInstance.h>
+#include "PhysicalWorld.h"
 
 Game::Game()
 {
@@ -97,6 +98,8 @@ void Game::InitEngine()
 	input = engine->GetInput();
 	res_mgr = engine->GetResourceManager();
 	sound_mgr = engine->GetSoundManager();
+
+	phy_world.reset(new PhysicalWorld);
 }
 
 void Game::InitGame()

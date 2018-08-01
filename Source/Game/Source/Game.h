@@ -33,6 +33,8 @@ private:
 	ResourceManager* res_mgr;
 	SoundManager* sound_mgr;
 
+	unique_ptr<PhysicalWorld> phy_world;
+
 	SceneNode* player;
 	Camera* cam;
 	Vec2 cam_rot;

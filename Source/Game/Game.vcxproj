@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>down</TargetName>
     <OutDir>$(SolutionDir)..\Bin\</OutDir>
-    <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Output\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>RS</TargetName>
@@ -82,7 +82,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>down_d</TargetName>
     <OutDir>$(SolutionDir)..\Bin\</OutDir>
-    <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Output\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>RS_d</TargetName>
@@ -172,10 +172,12 @@
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\PhysicalWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameCore.h" />
+    <ClInclude Include="Source\PhysicalWorld.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

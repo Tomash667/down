@@ -10,6 +10,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj",
 		{BB5DA351-27E5-499A-B6B7-C5CDA4464DAA} = {BB5DA351-27E5-499A-B6B7-C5CDA4464DAA}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependency", "Dependency", "{4619679D-BDF8-470D-852A-9A55E92E224A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletCollision", "External\BulletPhysics\BulletCollision.vcxproj", "{B91153C5-259D-C089-2EAE-437E9AB81C8A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinearMath", "External\BulletPhysics\LinearMath.vcxproj", "{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,9 +40,25 @@ Global
 		{898BB613-D0F9-4DA3-A94F-0AD645BC8A75}.Release|x64.Build.0 = Release|x64
 		{898BB613-D0F9-4DA3-A94F-0AD645BC8A75}.Release|x86.ActiveCfg = Release|Win32
 		{898BB613-D0F9-4DA3-A94F-0AD645BC8A75}.Release|x86.Build.0 = Release|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Debug|x64.ActiveCfg = Debug|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Debug|x86.ActiveCfg = Debug|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Debug|x86.Build.0 = Debug|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Release|x64.ActiveCfg = Release|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Release|x86.ActiveCfg = Release|Win32
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A}.Release|x86.Build.0 = Release|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Debug|x64.ActiveCfg = Debug|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Debug|x86.ActiveCfg = Debug|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Debug|x86.Build.0 = Debug|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Release|x64.ActiveCfg = Release|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Release|x86.ActiveCfg = Release|Win32
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B91153C5-259D-C089-2EAE-437E9AB81C8A} = {4619679D-BDF8-470D-852A-9A55E92E224A}
+		{EAF25DFD-D6AA-9F4A-3FB2-78A62B893A3B} = {4619679D-BDF8-470D-852A-9A55E92E224A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEEA238E-ABF4-4E84-B53F-956C5B14B627}
