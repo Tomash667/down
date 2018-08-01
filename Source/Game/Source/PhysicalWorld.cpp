@@ -1,5 +1,6 @@
 #include "GameCore.h"
 #include "PhysicalWorld.h"
+#include <btBulletCollisionCommon.h>
 
 void PhysicalWorld::Init()
 {
