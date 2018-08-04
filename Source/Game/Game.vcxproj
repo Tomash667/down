@@ -98,8 +98,8 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Engine\Include;$(SolutionDir)External\Visual Leak Detector\include;$(SolutionDir)External\BulletPhysics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)Engine\Lib;$(SolutionDir)External\FMod\lib;$(SolutionDir)External\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DXGI.lib;D3D11.lib;D3DCompiler.lib;Gdiplus.lib;dbghelp.lib;engine_d.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib;$(SolutionDir)External\FMod\lib;$(SolutionDir)External\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DXGI.lib;D3D11.lib;D3DCompiler.lib;Gdiplus.lib;dbghelp.lib;Engine_d.lib;fmodex_vc.lib;LinearMath_d.lib;BulletCollision_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
@@ -136,8 +136,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)Engine\Lib;$(SolutionDir)External\FMod\lib;$(SolutionDir)External\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DXGI.lib;D3D11.lib;D3DCompiler.lib;Gdiplus.lib;engine.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib;$(SolutionDir)External\FMod\lib;$(SolutionDir)External\Visual Leak Detector\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DXGI.lib;D3D11.lib;D3DCompiler.lib;Gdiplus.lib;Engine.lib;fmodex_vc.lib;LinearMath.lib;BulletCollision.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Manifest>
@@ -170,14 +170,25 @@
     <ResourceCompile Include="Source\Resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Npc.cpp" />
     <ClCompile Include="Source\PhysicalWorld.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Chest.h" />
+    <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameCore.h" />
+    <ClInclude Include="Source\Level.h" />
+    <ClInclude Include="Source\Npc.h" />
     <ClInclude Include="Source\PhysicalWorld.h" />
+    <ClInclude Include="Source\Player.h" />
+    <ClInclude Include="Source\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -20,6 +20,7 @@ public:
 	void DrawTriangle(const Vec2(&pts)[3], float y);
 	void DrawQuad(const Vec3 pos[4]);
 	void DrawQuad(const Box2d& box, float y);
+	void DrawCube(const Matrix& mat_world);
 	void DrawCube(const Box& box);
 	void DrawSphere(const Vec3& pos, float radius);
 

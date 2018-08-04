@@ -24,8 +24,11 @@ private:
 	void InitEngine();
 	void InitGame();
 	bool OnTick(float dt) override;
+	void OnDebugDraw(DebugDrawer* debug_drawer);
 	void UpdatePlayer(float dt);
 	void UpdateCamera(float dt);
+	void Save(FileWriter& f);
+	void Load(FileReader& f);
 
 	unique_ptr<Engine> engine;
 	Scene* scene;
@@ -34,6 +37,7 @@ private:
 	SoundManager* sound_mgr;
 
 	unique_ptr<PhysicalWorld> phy_world;
+	bool draw_phy;
 
 	SceneNode* player;
 	Camera* cam;

@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>engine_d</TargetName>
+    <TargetName>Engine_d</TargetName>
     <OutDir>$(SolutionDir)Lib\</OutDir>
     <IntDir>$(SolutionDir)Output\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -80,7 +80,7 @@
     <IntDir>Output\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>engine</TargetName>
+    <TargetName>Engine</TargetName>
     <OutDir>$(SolutionDir)Lib\</OutDir>
     <IntDir>$(SolutionDir)Output\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>

@@ -11,7 +11,7 @@
 #include <MeshInstance.h>
 #include "PhysicalWorld.h"
 
-Game::Game()
+Game::Game() : draw_phy(false)
 {
 }
 
@@ -100,6 +100,10 @@ void Game::InitEngine()
 	sound_mgr = engine->GetSoundManager();
 
 	phy_world.reset(new PhysicalWorld);
+	phy_world->Init();
+
+	scene->SetDebugDrawHandler(delegate<void(DebugDrawer*)>(this, &Game::OnDebugDraw));
+	scene->SetDebugDrawEnabled(true);
 }
 
 void Game::InitGame()
@@ -130,6 +134,14 @@ void Game::InitGame()
 	cam->from = Vec3(2, 2, 2);
 	cam->to = Vec3(0, 0, 0);
 	cam_rot = Vec2(0, 4.47908592f);
+
+	SceneNode* box = new SceneNode;
+	box->mesh = res_mgr->GetMesh("box.qmsh");
+	box->pos = Vec3(3, 0, 0);
+	box->rot = Vec3::Zero;
+	scene->Add(box);
+
+	phy_world->AddBoxCollider();
 }
 
 bool Game::OnTick(float dt)
@@ -150,10 +162,21 @@ bool Game::OnTick(float dt)
 	if(input->Pressed(Key::U))
 		window->SetCursorLock(!window->IsCursorLocked());
 
+#ifdef _DEBUG
+	if(input->Pressed(Key::N0))
+		draw_phy = !draw_phy;
+#endif
+
 	UpdatePlayer(dt);
 	UpdateCamera(dt);
 
 	return true;
+}
+
+void Game::OnDebugDraw(DebugDrawer* debug_drawer)
+{
+	if(draw_phy)
+		phy_world->Draw(debug_drawer);
 }
 
 void Game::UpdatePlayer(float dt)

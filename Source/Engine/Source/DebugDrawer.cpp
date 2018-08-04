@@ -209,6 +209,12 @@ void DebugDrawer::DrawQuad(const Box2d& box, float y)
 	shader->Draw(verts);
 }
 
+void DebugDrawer::DrawCube(const Matrix& mat_world)
+{
+	assert(!batch);
+	shader->Draw(mesh_cube, mat_world, color);
+}
+
 void DebugDrawer::DrawCube(const Box& box)
 {
 	assert(!batch);
