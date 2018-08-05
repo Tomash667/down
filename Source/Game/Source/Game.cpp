@@ -136,13 +136,26 @@ void Game::InitGame()
 	cam_rot = Vec2(0, 4.47908592f);
 	cam_dist = 2.f;
 
-	SceneNode* box = new SceneNode;
-	box->mesh = res_mgr->GetMesh("box.qmsh");
-	box->pos = Vec3(3, 0, 0);
-	box->rot = Vec3::Zero;
-	scene->Add(box);
+	phy_world->AddFloor();
 
-	phy_world->AddColliders();
+	Vec3 box_pos[] = {
+		Vec3(3, 0, 0),
+		Vec3(-2, 0, 4),
+		Vec3(-3, 0, -5)
+	};
+
+	for(int i = 0; i < 3; ++i)
+	{
+		Vec3 pos = box_pos[i];
+		phy_world->AddBox(pos);
+		SceneNode* box = new SceneNode;
+		box->mesh = res_mgr->GetMesh("box.qmsh");
+		box->pos = pos;
+		box->rot = Vec3::Zero;
+		scene->Add(box);
+	}
+
+	phy_world->AddPlayer();
 }
 
 bool Game::OnTick(float dt)

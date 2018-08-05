@@ -8,7 +8,9 @@ public:
 	void Init();
 	void Draw(DebugDrawer* debug_drawer);
 	//
-	void AddColliders();
+	void AddFloor();
+	void AddPlayer();
+	void AddBox(const Vec3& pos);
 	void UpdatePlayerPos(Vec3& pos);
 
 private:
@@ -19,6 +21,7 @@ private:
 	btDbvtBroadphase* broadphase;
 	btCollisionWorld* world;
 	vector<btCollisionShape*> shapes;
+	btCollisionShape* box_shape;
 
 	btCollisionObject* player_cobj;
 	vector<btCollisionObject*> active_colliders;
