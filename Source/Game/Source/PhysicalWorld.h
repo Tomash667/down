@@ -11,6 +11,7 @@ public:
 	void AddFloor();
 	void AddPlayer();
 	void AddBox(const Vec3& pos);
+	void AddLevel(Mesh* mesh);
 	void UpdatePlayerPos(Vec3& pos);
 
 private:

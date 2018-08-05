@@ -11,8 +11,10 @@ QmshLoader::QmshLoader(ResourceManager* res_mgr, ID3D11Device* device, ID3D11Dev
 {
 }
 
-Mesh* QmshLoader::Load(cstring name, cstring path, bool raw)
+Mesh* QmshLoader::Load(cstring name, cstring path, int flags)
 {
+	assert(IS_SET(flags, MESH_NORMAL | MESH_RAW));
+
 	Mesh* mesh = new Mesh(name);
 
 	cstring dir_part = strrchr(name, '/');
@@ -24,7 +26,7 @@ Mesh* QmshLoader::Load(cstring name, cstring path, bool raw)
 	try
 	{
 		FileReader f(path);
-		LoadInternal(*mesh, f, raw);
+		LoadInternal(*mesh, f, flags);
 	}
 	catch(cstring err)
 	{
@@ -35,7 +37,7 @@ Mesh* QmshLoader::Load(cstring name, cstring path, bool raw)
 	return mesh;
 }
 
-void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, bool raw)
+void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, int flags)
 {
 	if(!f)
 		throw "Failed to open file.";
@@ -87,16 +89,12 @@ void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, bool raw)
 	if(!f.Ensure(size))
 		throw "Failed to read vertex data.";
 
-	if(raw)
-	{
-		mesh.vertex_data.resize(size);
-		f.Read(mesh.vertex_data.data(), size);
-	}
-	else
-	{
-		buf.resize(size);
-		f.Read(buf.data(), size);
+	vector<byte>& vertex_data = IS_SET(flags, MESH_RAW) ? mesh.vertex_data : buf;
+	vertex_data.resize(size);
+	f.Read(vertex_data.data(), size);
 
+	if(IS_SET(flags, MESH_NORMAL))
+	{
 		D3D11_BUFFER_DESC v_desc;
 		v_desc.Usage = D3D11_USAGE_DEFAULT;
 		v_desc.ByteWidth = size;
@@ -106,7 +104,7 @@ void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, bool raw)
 		v_desc.StructureByteStride = 0;
 
 		D3D11_SUBRESOURCE_DATA v_data;
-		v_data.pSysMem = buf.data();
+		v_data.pSysMem = vertex_data.data();
 
 		HRESULT result = device->CreateBuffer(&v_desc, &v_data, &mesh.vb);
 		if(FAILED(result))
@@ -118,16 +116,12 @@ void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, bool raw)
 	if(!f.Ensure(size))
 		throw "Failed to read index data.";
 
-	if(raw)
-	{
-		mesh.index_data.resize(size / 2);
-		f.Read(mesh.index_data.data(), size);
-	}
-	else
-	{
-		buf.resize(size);
-		f.Read(buf.data(), size);
+	vector<byte>& index_data = IS_SET(flags, MESH_RAW) ? mesh.index_data : buf;
+	index_data.resize(size);
+	f.Read(index_data.data(), size);
 
+	if(IS_SET(flags, MESH_NORMAL))
+	{
 		D3D11_BUFFER_DESC v_desc;
 		v_desc.Usage = D3D11_USAGE_DEFAULT;
 		v_desc.ByteWidth = size;
@@ -137,7 +131,7 @@ void QmshLoader::LoadInternal(Mesh& mesh, FileReader& f, bool raw)
 		v_desc.StructureByteStride = 0;
 
 		D3D11_SUBRESOURCE_DATA v_data;
-		v_data.pSysMem = buf.data();
+		v_data.pSysMem = index_data.data();
 
 		HRESULT result = device->CreateBuffer(&v_desc, &v_data, &mesh.ib);
 		if(FAILED(result))

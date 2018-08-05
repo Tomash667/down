@@ -58,25 +58,13 @@ Font* ResourceManager::GetFont(Cstring name, int size)
 	return font;
 }
 
-Mesh* ResourceManager::GetMesh(Cstring name)
+Mesh* ResourceManager::GetMesh(Cstring name, int flags)
 {
 	Mesh* mesh = (Mesh*)Get(name, Resource::Type::Mesh);
 	if(!mesh)
 	{
 		cstring path = Format("Data/%s", name);
-		mesh = qmsh_loader->Load(name, path, false);
-		resources.insert(mesh);
-	}
-	return mesh;
-}
-
-Mesh* ResourceManager::GetMeshRaw(Cstring name)
-{
-	Mesh* mesh = (Mesh*)Get(name, Resource::Type::Mesh);
-	if(!mesh)
-	{
-		cstring path = Format("Data/%s", name);
-		mesh = qmsh_loader->Load(name, path, true);
+		mesh = qmsh_loader->Load(name, path, flags);
 		resources.insert(mesh);
 	}
 	return mesh;

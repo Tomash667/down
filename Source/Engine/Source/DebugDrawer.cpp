@@ -234,6 +234,12 @@ void DebugDrawer::DrawCapsule(const Matrix& mat_world)
 	shader->Draw(mesh_capsule, mat_world, color);
 }
 
+void DebugDrawer::DrawMesh(Mesh* mesh, const Matrix& mat_world)
+{
+	assert(!batch);
+	shader->Draw(mesh, mat_world, color);
+}
+
 void DebugDrawer::SetColor(Color color)
 {
 	if(color != this->color)

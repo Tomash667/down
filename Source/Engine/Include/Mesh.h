@@ -144,6 +144,5 @@ struct Mesh final : Resource
 	vector<Point> attach_points;
 	vector<BoneGroup> groups;
 	vector<Matrix> model_to_bone;
-	vector<byte> vertex_data;
-	vector<word> index_data;
+	vector<byte> vertex_data, index_data;
 };

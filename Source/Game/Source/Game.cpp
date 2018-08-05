@@ -124,11 +124,11 @@ void Game::InitGame()
 	player_ani = ANI_STAND;
 	scene->Add(player);
 
-	SceneNode* floor = new SceneNode;
-	floor->mesh = res_mgr->GetMesh("floor.qmsh");
-	floor->pos = Vec3::Zero;
-	floor->rot = Vec3::Zero;
-	scene->Add(floor);
+	SceneNode* level = new SceneNode;
+	level->mesh = res_mgr->GetMesh("level.qmsh");
+	level->pos = Vec3::Zero;
+	level->rot = Vec3::Zero;
+	scene->Add(level);
 
 	cam = scene->GetCamera();
 	cam->from = Vec3(2, 2, 2);
@@ -136,24 +136,7 @@ void Game::InitGame()
 	cam_rot = Vec2(0, 4.47908592f);
 	cam_dist = 2.f;
 
-	phy_world->AddFloor();
-
-	Vec3 box_pos[] = {
-		Vec3(3, 0, 0),
-		Vec3(-2, 0, 4),
-		Vec3(-3, 0, -5)
-	};
-
-	for(int i = 0; i < 3; ++i)
-	{
-		Vec3 pos = box_pos[i];
-		phy_world->AddBox(pos);
-		SceneNode* box = new SceneNode;
-		box->mesh = res_mgr->GetMesh("box.qmsh");
-		box->pos = pos;
-		box->rot = Vec3::Zero;
-		scene->Add(box);
-	}
+	phy_world->AddLevel(res_mgr->GetMesh("level.phy", MESH_NORMAL | MESH_RAW));
 
 	phy_world->AddPlayer();
 }

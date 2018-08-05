@@ -24,6 +24,7 @@ public:
 	void DrawCube(const Box& box);
 	void DrawSphere(const Vec3& pos, float radius);
 	void DrawCapsule(const Matrix& mat_world);
+	void DrawMesh(Mesh* mesh, const Matrix& mat_world);
 
 	void SetColor(Color color);
 	void SetWireframe(bool wireframe);

@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include "PhysicalWorld.h"
 #include <DebugDrawer.h>
+#include <Mesh.h>
 #pragma warning(push, 0)
 #include <btBulletCollisionCommon.h>
 #pragma warning(pop)
@@ -106,6 +107,12 @@ void PhysicalWorld::DrawCollisionObjects(DebugDrawer* debug_drawer, int alpha)
 				debug_drawer->DrawCapsule(Matrix::Scale(Vec3(radius, capsule->getHalfHeight() + radius, radius)) * m);
 			}
 			break;
+		case TRIANGLE_MESH_SHAPE_PROXYTYPE:
+			{
+				Mesh* mesh = (Mesh*)shape->getUserPointer();
+				debug_drawer->DrawMesh(mesh, m);
+			}
+			break;
 		default:
 			assert_once(0);
 			break;
@@ -145,6 +152,31 @@ void PhysicalWorld::AddPlayer()
 	world->addCollisionObject(cobj);
 	shapes.push_back(shape);
 	player_cobj = cobj;
+}
+
+void PhysicalWorld::AddLevel(Mesh* mesh)
+{
+	assert(mesh && !mesh->vertex_data.empty());
+
+	btTriangleIndexVertexArray* tri_array = new btTriangleIndexVertexArray;
+
+	btIndexedMesh indexed_mesh;
+	indexed_mesh.m_numTriangles = mesh->head.n_tris;
+	indexed_mesh.m_triangleIndexBase = (byte*)mesh->index_data.data();
+	indexed_mesh.m_triangleIndexStride = sizeof(word) * 3;
+	indexed_mesh.m_numVertices = mesh->head.n_verts;
+	indexed_mesh.m_vertexBase = mesh->vertex_data.data();
+	indexed_mesh.m_vertexStride = sizeof(Vec3);
+
+	tri_array->addIndexedMesh(indexed_mesh, PHY_SHORT);
+
+	btBvhTriangleMeshShape* shape = new btBvhTriangleMeshShape(tri_array, true);
+	shape->setUserPointer(mesh);
+	shapes.push_back(shape);
+	
+	btCollisionObject* cobj = new btCollisionObject;
+	cobj->setCollisionShape(shape);
+	world->addCollisionObject(cobj);
 }
 
 struct ContactTestCallback : btCollisionWorld::ContactResultCallback

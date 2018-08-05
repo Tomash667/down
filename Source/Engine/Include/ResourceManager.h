@@ -2,6 +2,12 @@
 
 #include "Resource.h"
 
+enum LoadMeshFlags
+{
+	MESH_NORMAL = 1 << 0,
+	MESH_RAW = 1 << 1
+};
+
 class ResourceManager
 {
 public:
@@ -11,8 +17,7 @@ public:
 
 	void AddFontFromFile(Cstring name);
 	Font* GetFont(Cstring name, int size);
-	Mesh* GetMesh(Cstring name);
-	Mesh* GetMeshRaw(Cstring name);
+	Mesh* GetMesh(Cstring name, int flags = MESH_NORMAL);
 	Music* GetMusic(Cstring name);
 	Sound* GetSound(Cstring name);
 	Texture* GetTexture(Cstring name);
