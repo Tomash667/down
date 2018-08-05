@@ -42,6 +42,7 @@ private:
 	SceneNode* player;
 	Camera* cam;
 	Vec2 cam_rot;
+	float cam_dist;
 	float player_rot_to;
 	Animation player_ani;
 };

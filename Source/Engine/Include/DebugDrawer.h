@@ -23,6 +23,7 @@ public:
 	void DrawCube(const Matrix& mat_world);
 	void DrawCube(const Box& box);
 	void DrawSphere(const Vec3& pos, float radius);
+	void DrawCapsule(const Matrix& mat_world);
 
 	void SetColor(Color color);
 	void SetWireframe(bool wireframe);
@@ -35,7 +36,7 @@ private:
 	Render* render;
 	ResourceManager* res_mgr;
 	unique_ptr<DebugShader> shader;
-	Mesh* mesh_cube, *mesh_sphere;
+	Mesh* mesh_cube, *mesh_sphere, *mesh_capsule;
 	Vec3 cam_pos;
 	Matrix mat_view_inv;
 	Color color;

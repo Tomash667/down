@@ -19,6 +19,7 @@ void DebugDrawer::Init()
 
 	mesh_cube = res_mgr->GetMesh("engine/cube.qmsh");
 	mesh_sphere = res_mgr->GetMesh("engine/sphere.qmsh");
+	mesh_capsule = res_mgr->GetMesh("engine/capsule.qmsh");
 }
 
 void DebugDrawer::BeginBatch()
@@ -225,6 +226,12 @@ void DebugDrawer::DrawSphere(const Vec3& pos, float radius)
 {
 	assert(!batch);
 	shader->Draw(mesh_sphere, Matrix::Scale(radius) * Matrix::Translation(pos), color);
+}
+
+void DebugDrawer::DrawCapsule(const Matrix& mat_world)
+{
+	assert(!batch);
+	shader->Draw(mesh_capsule, mat_world, color);
 }
 
 void DebugDrawer::SetColor(Color color)

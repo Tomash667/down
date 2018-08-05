@@ -17,4 +17,5 @@ class btDefaultCollisionConfiguration;
 class btCollisionDispatcher;
 class btCollisionWorld;
 class btCollisionShape;
+class btCollisionObject;
 struct btDbvtBroadphase;

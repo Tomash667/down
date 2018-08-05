@@ -134,6 +134,7 @@ void Game::InitGame()
 	cam->from = Vec3(2, 2, 2);
 	cam->to = Vec3(0, 0, 0);
 	cam_rot = Vec2(0, 4.47908592f);
+	cam_dist = 2.f;
 
 	SceneNode* box = new SceneNode;
 	box->mesh = res_mgr->GetMesh("box.qmsh");
@@ -141,7 +142,7 @@ void Game::InitGame()
 	box->rot = Vec3::Zero;
 	scene->Add(box);
 
-	phy_world->AddBoxCollider();
+	phy_world->AddColliders();
 }
 
 bool Game::OnTick(float dt)
@@ -255,7 +256,10 @@ void Game::UpdatePlayer(float dt)
 			bool run = !back && !input->Down(Key::Shift);
 
 			const float speed = run ? 7.f : 2.5f;
-			player->pos += Vec3(cos(dir), 0, sin(dir)) * (speed * dt);
+			Vec3 new_pos = player->pos + Vec3(cos(dir), 0, sin(dir)) * (speed * dt);
+
+			phy_world->UpdatePlayerPos(new_pos);
+			player->pos = new_pos;
 
 			if(run)
 				ani = ANI_RUN;
@@ -297,8 +301,9 @@ void Game::UpdatePlayer(float dt)
 
 void Game::UpdateCamera(float dt)
 {
+	cam_dist -= 0.25f * input->GetMouseWheel();
+
 	const float h = 1.7f;
-	const float dist = 1.5f;
 	const Vec2 angle_limits = Vec2(3.24f, 5.75f);
 
 	Int2 dif = input->GetMouseDif();
@@ -308,7 +313,7 @@ void Game::UpdateCamera(float dt)
 	Vec3 to = player->pos;
 	to.y += h;
 
-	Vec3 ray(0, -dist, 0);
+	Vec3 ray(0, -cam_dist, 0);
 	Matrix mat = Matrix::Rotation(-cam_rot.x - PI / 2, cam_rot.y, 0);
 	ray = Vec3::Transform(ray, mat);
 

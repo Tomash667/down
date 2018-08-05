@@ -23,4 +23,6 @@ struct Player : Unit
 
 	static const int MAX_POTIONS = 5;
 	static const int MAX_COLLECTIBLES = 20;
+	static const float radius;
+	static const float height;
 };

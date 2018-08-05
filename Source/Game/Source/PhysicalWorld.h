@@ -7,14 +7,19 @@ public:
 	~PhysicalWorld();
 	void Init();
 	void Draw(DebugDrawer* debug_drawer);
-	void AddBoxCollider();
+	//
+	void AddColliders();
+	void UpdatePlayerPos(Vec3& pos);
 
 private:
-	void DrawCollisionObjects(DebugDrawer* debug_drawer);
+	void DrawCollisionObjects(DebugDrawer* debug_drawer, int alpha);
 
 	btDefaultCollisionConfiguration* config;
 	btCollisionDispatcher* dispatcher;
 	btDbvtBroadphase* broadphase;
 	btCollisionWorld* world;
 	vector<btCollisionShape*> shapes;
+
+	btCollisionObject* player_cobj;
+	vector<btCollisionObject*> active_colliders;
 };
