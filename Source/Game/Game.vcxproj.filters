@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{f8c7792b-f216-4a0c-9bc8-de014f39fe38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Source\Icon.ico">
@@ -49,6 +52,18 @@
     <ClCompile Include="Source\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MainMenu.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Options.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadMenu.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameMenu.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -77,6 +92,18 @@
     </ClInclude>
     <ClInclude Include="Source\Level.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MainMenu.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Options.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadMenu.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameMenu.h">
+      <Filter>Gui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

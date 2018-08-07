@@ -172,9 +172,13 @@
   <ItemGroup>
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\GameMenu.cpp" />
     <ClCompile Include="Source\Level.cpp" />
+    <ClCompile Include="Source\LoadMenu.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\MainMenu.cpp" />
     <ClCompile Include="Source\Npc.cpp" />
+    <ClCompile Include="Source\Options.cpp" />
     <ClCompile Include="Source\PhysicalWorld.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Unit.cpp" />
@@ -184,8 +188,12 @@
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameCore.h" />
+    <ClInclude Include="Source\GameMenu.h" />
     <ClInclude Include="Source\Level.h" />
+    <ClInclude Include="Source\LoadMenu.h" />
+    <ClInclude Include="Source\MainMenu.h" />
     <ClInclude Include="Source\Npc.h" />
+    <ClInclude Include="Source\Options.h" />
     <ClInclude Include="Source\PhysicalWorld.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Unit.h" />

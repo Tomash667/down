@@ -6,6 +6,9 @@ class Game;
 class Level;
 class PhysicalWorld;
 
+// gui
+class MainMenu;
+
 struct Chest;
 struct Enemy;
 struct Npc;
